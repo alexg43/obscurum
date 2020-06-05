@@ -1,2 +1,0 @@
-cd bin
-jar -cfe Obscurum.jar obscurum.GameMain obscurum

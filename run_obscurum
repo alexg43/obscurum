@@ -1,7 +1,0 @@
-cd src
-javac -d ../bin/ -Xlint obscurum/GameMain.java
-if [ $? -eq 0 ]
-then
-  cd ../bin
-  java obscurum.GameMain
-fi
