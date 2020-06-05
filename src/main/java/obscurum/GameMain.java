@@ -10,64 +10,55 @@ import obscurum.screens.MainMenuScreen;
 import obscurum.screens.StartScreen;
 import obscurum.screens.Screen;
 
-/**
- * This is the application's starting point.
- * @author Alex Ghita
- */
 public class GameMain extends JFrame implements KeyListener {
-  private static final long serialVersionUID = 1;
+    public static final int SCREEN_WIDTH = 110;
+    public static final int SCREEN_HEIGHT = 29;
+    public static final int NUM_OF_GLYPHS = 256;
+    public static ArrayList<ForegroundTile> foregroundTiles;
 
-  // The terminal where things are displayed.
-  private AsciiPanel terminal;
-  // The currently displayed screen.
-  private Screen screen;
-  public static final int SCREEN_WIDTH = 110;
-  public static final int SCREEN_HEIGHT = 29;
-  public static final int NUM_OF_GLYPHS = 256;
-  public static ArrayList<ForegroundTile> foregroundTiles;
+    private final AsciiPanel terminal;
+    private Screen screen;
 
-  public GameMain() {
-    super("Obscurum");
-    terminal = new AsciiPanel(SCREEN_WIDTH, SCREEN_HEIGHT);
-    add(terminal);
-    pack();
-    setResizable(false);
+    public GameMain() {
+        super("Obscurum");
+        terminal = new AsciiPanel(SCREEN_WIDTH, SCREEN_HEIGHT);
+        add(terminal);
+        pack();
+        setResizable(false);
 
-    foregroundTiles = new ArrayList<ForegroundTile>();
-    foregroundTiles.add(new Stone());
-    foregroundTiles.add(new Wall());
-    // read file and add tiles
+        foregroundTiles = new ArrayList<>();
+        foregroundTiles.add(new Stone());
+        foregroundTiles.add(new Wall());
 
-    screen = new StartScreen();
-    addKeyListener(this);
-    repaint();
-  }
-
-  public void repaint() {
-    terminal.clear();
-    screen.displayOutput(terminal);
-    super.repaint();
-  }
-
-  public void keyTyped(KeyEvent e) {
-
-  }
-
-  public void keyPressed(KeyEvent e) {
-    if (e.getKeyCode() == KeyEvent.VK_Q && screen instanceof MainMenuScreen) {
-      this.dispose();
+        screen = new StartScreen();
+        addKeyListener(this);
+        repaint();
     }
-    screen = screen.respondToUserInput(e);
-    repaint();
-  }
 
-  public void keyReleased(KeyEvent e) {
+    public void repaint() {
+        terminal.clear();
+        screen.displayOutput(terminal);
+        super.repaint();
+    }
 
-  }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_Q && screen instanceof MainMenuScreen) {
+            this.dispose();
+        }
+        screen = screen.respondToUserInput(e);
+        repaint();
+    }
 
-  public static void main(String[] args) {
-    GameMain app = new GameMain();
-    app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    app.setVisible(true);
-  }
+    @Override
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        GameMain app = new GameMain();
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.setVisible(true);
+    }
 }
