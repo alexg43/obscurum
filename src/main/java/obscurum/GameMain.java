@@ -2,7 +2,8 @@ package obscurum;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JFrame;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.foreground.*;
@@ -14,7 +15,7 @@ public class GameMain extends JFrame implements KeyListener {
     public static final int SCREEN_WIDTH = 110;
     public static final int SCREEN_HEIGHT = 29;
     public static final int NUM_OF_GLYPHS = 256;
-    public static ArrayList<ForegroundTile> foregroundTiles;
+    public static List<ForegroundTile> foregroundTiles = Arrays.asList(new Stone(), new Wall());
 
     private final AsciiPanel terminal;
     private Screen screen;
@@ -25,10 +26,6 @@ public class GameMain extends JFrame implements KeyListener {
         add(terminal);
         pack();
         setResizable(false);
-
-        foregroundTiles = new ArrayList<>();
-        foregroundTiles.add(new Stone());
-        foregroundTiles.add(new Wall());
 
         screen = new StartScreen();
         addKeyListener(this);
