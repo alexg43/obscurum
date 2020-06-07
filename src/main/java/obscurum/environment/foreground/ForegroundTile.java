@@ -32,7 +32,7 @@ public abstract class ForegroundTile extends Tile {
 
     public void setCurrentHealth(int currentHealth) {
         if (currentHealth < 0) {
-            throw new IllegalArgumentException(String.format("Health %d must not be negative.", currentHealth));
+            throw new IllegalArgumentException(String.format("Health %d must be non-negative.", currentHealth));
         }
         this.currentHealth = currentHealth;
     }
@@ -42,5 +42,15 @@ public abstract class ForegroundTile extends Tile {
             throw new IllegalArgumentException(String.format("Armour %d must be non-negative.", armour));
         }
         this.armour = armour;
+    }
+
+    public void dealDamage(int damage) {
+        if (damage < 0) {
+            throw new IllegalArgumentException(String.format("The amount of damage dealt (%d) must be non-negative.", damage));
+        }
+
+        if (!invulnerable) {
+            currentHealth = Math.max(0, currentHealth - damage);
+        }
     }
 }
