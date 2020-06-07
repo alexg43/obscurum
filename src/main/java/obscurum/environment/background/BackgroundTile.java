@@ -4,18 +4,24 @@ import java.awt.Color;
 
 import lombok.Getter;
 import lombok.NonNull;
+import obscurum.display.Display;
+import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Tile;
 
 @Getter
-public abstract class BackgroundTile extends Tile {
-    private Color backgroundColour;
+public class BackgroundTile extends Tile {
+    private final Color backgroundColour;
 
-    public BackgroundTile(String name, char glyph, Color glyphColour, Color backgroundColour) {
+    protected BackgroundTile(String name, char glyph, Color glyphColour, @NonNull Color backgroundColour) {
         super(name, glyph, glyphColour);
-        setBackgroundColour(backgroundColour);
+        this.backgroundColour = backgroundColour;
     }
 
-    public void setBackgroundColour(@NonNull Color backgroundColour) {
-        this.backgroundColour = backgroundColour;
+    public static BackgroundTile createFloor() {
+        return new BackgroundTile("Floor", (char)250, AsciiPanel.red, AsciiPanel.black);
+    }
+
+    public static BackgroundTile createGrass() {
+        return new BackgroundTile("Grass", '.', AsciiPanel.green, Display.BLACK);
     }
 }

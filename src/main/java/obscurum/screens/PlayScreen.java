@@ -248,8 +248,8 @@ public class PlayScreen extends Screen {
 
     foregroundOptions.add(new Wall());
     foregroundOptions.add(new Stone());
-    backgroundOptions.add(new Floor());
-    backgroundOptions.add(new Grass());
+    backgroundOptions.add(BackgroundTile.createFloor());
+    backgroundOptions.add(BackgroundTile.createGrass());
 
     ArrayList<String[]> input = readCSV("custom_tiles.csv");
     for (String[] line : input) {

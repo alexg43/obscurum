@@ -13,7 +13,7 @@ public abstract class Trap extends BackgroundTile {
 
   public Trap() {
     super("Trap", (char)250, AsciiPanel.red, AsciiPanel.black);
-    sourceTile = new Floor();
+    sourceTile = BackgroundTile.createFloor();
   }
 
   public Trap(BackgroundTile sourceTile) {
