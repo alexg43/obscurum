@@ -2,19 +2,16 @@ package obscurum.creatures.ai;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import obscurum.creatures.Creature;
 import obscurum.creatures.util.Line;
 import obscurum.creatures.abilities.Spell;
-import obscurum.display.Display;
 import obscurum.environment.Level;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
 import obscurum.placeholders.NullCreature;
 import obscurum.util.PathTileData;
-import obscurum.util.PriorityComparator;
 
 /**
  * This models a creature's behaviour.
@@ -191,9 +188,8 @@ public abstract class CreatureAI {
     ArrayList<Point> path = new ArrayList<Point>();
     Level level = creature.getLevel();
     Point startLocation = creature.getLocation();
-    Comparator<PathTileData> comparator = new PriorityComparator();
     PriorityQueue<PathTileData> frontier = new PriorityQueue<PathTileData>(
-        level.getWidth() * level.getHeight(), comparator);
+        level.getWidth() * level.getHeight(), Comparator.comparingInt(PathTileData::getPriority));
     int[][] costs = new int[level.getWidth()][level.getHeight()];
 
     frontier.add(new PathTileData(startLocation, 0));
