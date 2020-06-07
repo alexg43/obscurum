@@ -1,20 +1,15 @@
 package obscurum.screens;
 
-import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.lang.Math;
 import java.util.ArrayList;
 import obscurum.util.Util;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
-import obscurum.display.Display;
 import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
-import obscurum.placeholders.NullItem;
-import obscurum.screens.Screen;
 
 /**
  * This models a subscreen where a player can see what items a corpse or a
@@ -52,7 +47,7 @@ public class LootScreen extends SubScreen {
          * least one more space for the amount.
          */
         int fillerRoom = 5 +
-            Util.numberOfDigits(corpse.getInventory().getAmount(i));
+            Util.getNumberOfDigits(corpse.getInventory().getAmount(i));
 
         width = Math.max(width,
             corpse.getInventory().getItem(i).getName().length() + fillerRoom);

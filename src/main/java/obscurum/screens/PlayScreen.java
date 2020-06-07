@@ -3,7 +3,6 @@ package obscurum.screens;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.io.*;
 import java.lang.Math;
 import java.util.ArrayList;
 import obscurum.GameMain;
@@ -99,7 +98,7 @@ public class PlayScreen extends Screen {
       terminal.write("Health:", STATS_TL_X + 1, STATS_TL_Y + 4);
       terminal.write(Integer.toString(player.getHealth()), STATS_TL_X + offset,
           STATS_TL_Y + 4, Display.RED);
-      offset += Util.numberOfDigits(player.getHealth());
+      offset += Util.getNumberOfDigits(player.getHealth());
       terminal.write("/" + player.getMaxHealth() + ".", STATS_TL_X + offset,
           STATS_TL_Y + 4);
     } else {
@@ -111,7 +110,7 @@ public class PlayScreen extends Screen {
       terminal.write("Mana:", STATS_TL_X + 1, STATS_TL_Y + 5);
       terminal.write(Integer.toString(player.getMana()), STATS_TL_X + offset,
           STATS_TL_Y + 5, Display.RED);
-      offset += Util.numberOfDigits(player.getMana());
+      offset += Util.getNumberOfDigits(player.getMana());
       terminal.write("/" + player.getMaxMana() + ".", STATS_TL_X + offset,
           STATS_TL_Y + 5);
     } else {

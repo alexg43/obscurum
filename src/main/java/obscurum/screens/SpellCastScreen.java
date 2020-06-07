@@ -1,12 +1,10 @@
 package obscurum.screens;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.lang.Math;
 import java.util.ArrayList;
 import obscurum.util.Util;
-import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
 import obscurum.creatures.abilities.Spell;
 import obscurum.display.Display;
@@ -14,8 +12,6 @@ import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
-import obscurum.placeholders.NullItem;
-import obscurum.screens.Screen;
 
 /**
  * This models a subscreen from which the player can select a known spell to
@@ -40,10 +36,10 @@ public class SpellCastScreen extends SubScreen {
     for (int i = 0; i < player.getSpells().size(); i++) {
       Spell spell = player.getSpells().get(i);
       int spellLength = spell.getName().length() +
-          Util.numberOfDigits(spell.getLevel()) +
-          Util.numberOfDigits(spell.getManaCost()) +
-          Util.numberOfDigits(spell.getCurrentCooldown()) +
-          Util.numberOfDigits(spell.getCooldown()) + 15;
+          Util.getNumberOfDigits(spell.getLevel()) +
+          Util.getNumberOfDigits(spell.getManaCost()) +
+          Util.getNumberOfDigits(spell.getCurrentCooldown()) +
+          Util.getNumberOfDigits(spell.getCooldown()) + 15;
 
       width = Math.max(width, spellLength);
     }

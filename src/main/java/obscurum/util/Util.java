@@ -1,33 +1,23 @@
 package obscurum.util;
 
-import java.lang.Math;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-/**
- * This class contains several general-purpose methods that may be of use.
- * @author Alex Ghita
- */
 public class Util {
-  public static int numberOfDigits(int n) {
-    int answer = 0;
+    private static final Random random = new Random();
 
-    do {
-      answer++;
-      n /= 10;
-    } while (n > 0);
+    public static int getNumberOfDigits(long n) {
+        int numberOfDigits = 0;
 
-    return answer;
-  }
+        do {
+            numberOfDigits++;
+            n /= 10;
+        } while (n != 0);
 
-  public static <E> E pickRandomElement(ArrayList<E> list) {
-    double chance = 1.0 / list.size();
-    double result = Math.random();
-
-    for (int i = 0; i < list.size(); i++) {
-      if (result < chance * (i + 1)) {
-        return list.get(i);
-      }
+        return numberOfDigits;
     }
-    return list.get(list.size() - 1);
-  }
+
+    public static <E> E pickRandomElement(List<E> list) {
+        return list.isEmpty() ? null : list.get(random.nextInt(list.size()));
+    }
 }
