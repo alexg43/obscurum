@@ -12,7 +12,7 @@ import obscurum.environment.Tile;
 public class BackgroundTile extends Tile {
     private final Color backgroundColour;
 
-    protected BackgroundTile(String name, char glyph, Color glyphColour, @NonNull Color backgroundColour) {
+    public BackgroundTile(String name, char glyph, Color glyphColour, @NonNull Color backgroundColour) {
         super(name, glyph, glyphColour);
         this.backgroundColour = backgroundColour;
     }

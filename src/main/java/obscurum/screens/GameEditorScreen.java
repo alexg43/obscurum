@@ -13,7 +13,6 @@ import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.environment.Tile;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.background.CustomBackgroundTile;
 import obscurum.environment.foreground.CustomForegroundTile;
 
 /**
@@ -35,7 +34,7 @@ public class GameEditorScreen extends Screen {
   private static final String[] listNames = {"Foreground Tiles",
       "Background Tiles"};
   private ArrayList<CustomForegroundTile> foregroundTiles;
-  private ArrayList<CustomBackgroundTile> backgroundTiles;
+  private ArrayList<BackgroundTile> backgroundTiles;
   private ArrayList<Integer> indicesToRemove;
   private ScrollList scrollList;
   private int selectedList; // 0 = foreground, 1 = background;
@@ -46,7 +45,7 @@ public class GameEditorScreen extends Screen {
   public GameEditorScreen() {
     super();
     foregroundTiles = new ArrayList<CustomForegroundTile>();
-    backgroundTiles = new ArrayList<CustomBackgroundTile>();
+    backgroundTiles = new ArrayList<BackgroundTile>();
     selectedList = previousList = 0;
 
     ArrayList<String[]> input = readCSV("custom_tiles.csv");
@@ -60,7 +59,7 @@ public class GameEditorScreen extends Screen {
       } else {
         Color bg = new Color(Integer.parseInt(line[5]),
             Integer.parseInt(line[6]), Integer.parseInt(line[7]));
-        backgroundTiles.add(new CustomBackgroundTile(name, glyph, fg, bg));
+        backgroundTiles.add(new BackgroundTile(name, glyph, fg, bg));
       }
     }
     inSubScreen = false;
@@ -75,7 +74,7 @@ public class GameEditorScreen extends Screen {
         scrollList.getEntries().size()));
   }
 
-  public void addBackgroundTile(CustomBackgroundTile b) {
+  public void addBackgroundTile(BackgroundTile b) {
     backgroundTiles.add(b);
     scrollList.getEntries().add(new ListEntry(b.getName(),
         scrollList.getEntries().size()));
@@ -254,8 +253,8 @@ public class GameEditorScreen extends Screen {
           Color fg = tile.getGlyphColour();
           writer.append(tile.getName() + "," + (int)tile.getGlyph() + "," +
               fg.getRed() + "," + fg.getGreen() + "," + fg.getBlue() + "\n");
-        } else if (o instanceof CustomBackgroundTile) {
-          CustomBackgroundTile tile = (CustomBackgroundTile)o;
+        } else if (o instanceof BackgroundTile) {
+          BackgroundTile tile = (BackgroundTile)o;
           Color fg = tile.getGlyphColour();
           Color bg = tile.getBackgroundColour();
           writer.append(tile.getName() + "," + (int)tile.getGlyph() + "," +

@@ -259,7 +259,7 @@ public class PlayScreen extends Screen {
             Integer.parseInt(line[2]), Integer.parseInt(line[3]),
             Integer.parseInt(line[4]))));
       } else {
-        backgroundOptions.add(new CustomBackgroundTile(line[0],
+        backgroundOptions.add(new BackgroundTile(line[0],
             (char)Integer.parseInt(line[1]),
             new Color(Integer.parseInt(line[2]), Integer.parseInt(line[3]),
             Integer.parseInt(line[4])), new Color(Integer.parseInt(line[5]),

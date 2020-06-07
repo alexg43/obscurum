@@ -1,24 +1,16 @@
 package obscurum.screens;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.lang.Math;
 import java.util.ArrayList;
 import obscurum.GameMain;
-import obscurum.util.Util;
-import obscurum.creatures.Creature;
-import obscurum.creatures.Player;
-import obscurum.creatures.abilities.Spell;
+import obscurum.environment.background.BackgroundTile;
 import obscurum.display.Display;
 import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.display.asciiPanel.AsciiPanel;
-import obscurum.environment.Level;
-import obscurum.environment.background.CustomBackgroundTile;
 import obscurum.environment.foreground.CustomForegroundTile;
-import obscurum.placeholders.NullItem;
-import obscurum.screens.Screen;
 
 /**
  * This models a subscreen where players can add new tiles through the game
@@ -162,7 +154,7 @@ public class EditorNewItemScreen extends SubScreen {
           mainScreen.addForegroundTile(new CustomForegroundTile(name, glyph,
               Display.COLOURS[fgIndex]));
         } else {
-          mainScreen.addBackgroundTile(new CustomBackgroundTile(name, glyph,
+          mainScreen.addBackgroundTile(new BackgroundTile(name, glyph,
               Display.COLOURS[fgIndex], Display.COLOURS[bgIndex]));
         }
         mainScreen.setInSubScreen();
