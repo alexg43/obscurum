@@ -93,16 +93,16 @@ public class PlayScreen extends Screen {
     terminal.write("Player Stats", STATS_TL_X + (STATS_WIDTH / 2) - 6,
         STATS_TL_Y + 2);
     writeHorizontalLine(terminal, STATS_TL_X, STATS_WIDTH - 1, STATS_TL_Y + 3);
-    if (player.getHealth() < player.getMaxHealth() * 0.5) {
+    if (player.getCurrentHealth() < player.getMaxHealth() * 0.5) {
       int offset = 8;
       terminal.write("Health:", STATS_TL_X + 1, STATS_TL_Y + 4);
-      terminal.write(Integer.toString(player.getHealth()), STATS_TL_X + offset,
+      terminal.write(Integer.toString(player.getCurrentHealth()), STATS_TL_X + offset,
           STATS_TL_Y + 4, Display.RED);
-      offset += Util.getNumberOfDigits(player.getHealth());
+      offset += Util.getNumberOfDigits(player.getCurrentHealth());
       terminal.write("/" + player.getMaxHealth() + ".", STATS_TL_X + offset,
           STATS_TL_Y + 4);
     } else {
-      terminal.write("Health:" + player.getHealth() + "/" +
+      terminal.write("Health:" + player.getCurrentHealth() + "/" +
           player.getMaxHealth() + ".", STATS_TL_X + 1, STATS_TL_Y + 4);
     }
     if (player.getMana() < player.getMaxMana() * 0.25) {
@@ -146,7 +146,7 @@ public class PlayScreen extends Screen {
       }
       targetName += ".";
       terminal.write(targetName, STATS_TL_X + 1, STATS_TL_Y + 13);
-      terminal.write("Health:" + target.getHealth() + "/" +
+      terminal.write("Health:" + target.getCurrentHealth() + "/" +
           target.getMaxHealth() + ".", STATS_TL_X + 1, STATS_TL_Y + 14);
       terminal.write("Mana:" + target.getMana() + "/" +
           target.getMaxMana() + ".", STATS_TL_X + 1, STATS_TL_Y + 15);

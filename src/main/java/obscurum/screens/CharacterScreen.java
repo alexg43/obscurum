@@ -3,7 +3,7 @@ package obscurum.screens;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.lang.Math;
+
 import obscurum.GameMain;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
@@ -175,7 +175,7 @@ public class CharacterScreen extends Screen {
     int[] attributes = player.getAttributes();
     int[] baseAttributes = player.getBaseAttributes();
 
-    terminal.write("Health:" + player.getHealth() + "/" +
+    terminal.write("Health:" + player.getCurrentHealth() + "/" +
         player.getMaxHealth() + ".", ATTRIBUTES_TL_X + 1,
         ATTRIBUTES_TL_Y + 1);
     terminal.write("Mana:" + player.getMana() + "/" +

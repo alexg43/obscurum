@@ -1,13 +1,8 @@
 package obscurum.creatures;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import obscurum.creatures.Creature;
-import obscurum.creatures.abilities.Spell;
-import obscurum.creatures.abilities.FireBlast;
-import obscurum.creatures.abilities.HealingTouch;
-import obscurum.creatures.util.EquipmentList;
+
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
 import obscurum.items.ConsumableItem;
@@ -16,9 +11,6 @@ import obscurum.items.Inventory;
 import obscurum.items.InventorySlot;
 import obscurum.items.Item;
 import obscurum.items.armour.*;
-import obscurum.items.weapons.Sword;
-import obscurum.items.weapons.Weapon;
-import obscurum.placeholders.NullCreature;
 import obscurum.placeholders.NullEquipment;
 import obscurum.screens.SubScreen;
 
@@ -293,29 +285,29 @@ public class Player extends Creature {
       return;
     }
 
-    int initialHealth = target.getHealth();
+    int initialHealth = target.getCurrentHealth();
 
     super.attackTarget();
 
-    boolean dodged = target.getHealth() == initialHealth &&
-        target.getHealth() != 0 ? true : false;
+    boolean dodged = target.getCurrentHealth() == initialHealth &&
+        target.getCurrentHealth() != 0 ? true : false;
     String message = dodged ?
         "You tried to attack " + target.getName() + ". You missed." :
         "You've hit " + target.getName() + " for " +
-        (initialHealth - target.getHealth()) + " damage. " + target.getName();
+        (initialHealth - target.getCurrentHealth()) + " damage. " + target.getName();
     if (dodged) {
       addMessageToCombatLog(message);
       return;
     }
-    if (damageDealt + initialHealth - target.getHealth() <= Integer.MAX_VALUE) {
-      damageDealt += initialHealth - target.getHealth();
+    if (damageDealt + initialHealth - target.getCurrentHealth() <= Integer.MAX_VALUE) {
+      damageDealt += initialHealth - target.getCurrentHealth();
     }
 
     if (godMode) {
-      target.setHealth(0);
+      target.setCurrentHealth(0);
     }
 
-    if (target.getHealth() == 0) {
+    if (target.getCurrentHealth() == 0) {
       int targetLevel = target.getAttributes()[Creature.POWER_LEVEL];
       int levelDiff = attributes[POWER_LEVEL] - targetLevel;
       int xp = levelDiff > 5 ? 0 : levelDiff < -5 ?
@@ -332,7 +324,7 @@ public class Player extends Creature {
         enemiesKilled++;
       }
     } else {
-      message += " has " + target.getHealth() + " health left.";
+      message += " has " + target.getCurrentHealth() + " health left.";
       addMessageToCombatLog(message);
     }
   }

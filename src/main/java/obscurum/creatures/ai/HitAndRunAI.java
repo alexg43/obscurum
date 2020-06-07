@@ -4,9 +4,6 @@ import java.awt.Point;
 import java.lang.Math;
 import java.util.ArrayList;
 import obscurum.creatures.Creature;
-import obscurum.creatures.Player;
-import obscurum.creatures.ai.CreatureAI;
-import obscurum.environment.Level;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
 
@@ -23,7 +20,7 @@ public class HitAndRunAI extends CreatureAI{
   public HitAndRunAI(Creature creature, int knowledgeType,
       ArrayList<ForegroundTile> transparentTiles) {
     super("Hit And Run", creature, knowledgeType, transparentTiles);
-    previousHealth = creature.getHealth();
+    previousHealth = creature.getCurrentHealth();
     hitMode = 0;
     hitWhileRunning = false;
   }
@@ -55,7 +52,7 @@ public class HitAndRunAI extends CreatureAI{
     if (foundPlayer) {
       Point targetLocation = creature.getTarget().getLocation();
 
-      if (hitMode == 0 || creature.getHealth() < previousHealth) {
+      if (hitMode == 0 || creature.getCurrentHealth() < previousHealth) {
         if (canSee(targetLocation, creature.getAttackRange())) {
           creature.attackTarget();
           hitMode = 1;
@@ -104,6 +101,6 @@ public class HitAndRunAI extends CreatureAI{
       moveInRandomDirection();
       hitMode = 0;
     }
-    previousHealth = creature.getHealth();
+    previousHealth = creature.getCurrentHealth();
   }
 }

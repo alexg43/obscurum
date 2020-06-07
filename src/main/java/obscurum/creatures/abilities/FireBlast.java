@@ -1,7 +1,6 @@
 package obscurum.creatures.abilities;
 
 import obscurum.creatures.Creature;
-import obscurum.creatures.Player;
 
 /**
  * This models a "Fire Blast" spells, which deals damage to the target
@@ -21,10 +20,10 @@ public class FireBlast extends Spell {
 
   public String getEffectMessage(Creature c) {
     String message = "You've dealt " + dealtDamage + " damage. " + c.getName();
-    if (c.getHealth() == 0) {
+    if (c.getCurrentHealth() == 0) {
       message += " died.";
     } else {
-      message += " has " + c.getHealth() + " health left.";
+      message += " has " + c.getCurrentHealth() + " health left.";
     }
     return message;
   }
@@ -45,7 +44,7 @@ public class FireBlast extends Spell {
   }
 
   protected void affect(Creature c, int casterSpellPower) {
-    dealtDamage = Math.min(c.getHealth(), damage + casterSpellPower);
-    c.setHealth(Math.max(0, c.getHealth() - dealtDamage));
+    dealtDamage = Math.min(c.getCurrentHealth(), damage + casterSpellPower);
+    c.setCurrentHealth(Math.max(0, c.getCurrentHealth() - dealtDamage));
   }
 }

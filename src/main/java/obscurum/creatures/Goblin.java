@@ -2,11 +2,9 @@ package obscurum.creatures;
 
 import java.awt.Point;
 import java.lang.Math;
-import obscurum.creatures.Creature;
-import obscurum.creatures.LootTableEntry;
+
 import obscurum.display.Display;
 import obscurum.environment.Level;
-import obscurum.items.Inventory;
 import obscurum.items.Item;
 import obscurum.items.Rags;
 import obscurum.items.SpellTome;
@@ -49,7 +47,7 @@ public class Goblin extends Creature {
 
   @Override
   public void powerUp() {
-    health += 80;
+    currentHealth += 80;
     armour += 10;
     attributes[Creature.POWER_LEVEL] += 10;
     attributes[Creature.LINE_OF_SIGHT] += 1;

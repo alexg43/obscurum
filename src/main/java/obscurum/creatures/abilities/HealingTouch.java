@@ -1,7 +1,6 @@
 package obscurum.creatures.abilities;
 
 import obscurum.creatures.Creature;
-import obscurum.creatures.Player;
 
 /**
  * This models a "Healing Touch" spells, which restores a number of health
@@ -21,7 +20,7 @@ public class HealingTouch extends Spell {
 
   public String getEffectMessage(Creature c) {
     String message = "You've healed " + healedLife + " health points. " +
-        c.getName() + " now has " + c.getHealth() + " health.";
+        c.getName() + " now has " + c.getCurrentHealth() + " health.";
     return message;
   }
 
@@ -42,7 +41,7 @@ public class HealingTouch extends Spell {
 
   protected void affect(Creature c, int casterSpellPower) {
     healedLife = Math.min(healing + casterSpellPower,
-        c.getMaxHealth() - c.getHealth());
-    c.setHealth(Math.min(c.getMaxHealth(), c.getHealth() + healedLife));
+        c.getMaxHealth() - c.getCurrentHealth());
+    c.setCurrentHealth(Math.min(c.getMaxHealth(), c.getCurrentHealth() + healedLife));
   }
 }

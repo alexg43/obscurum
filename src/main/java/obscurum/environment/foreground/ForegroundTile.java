@@ -8,7 +8,7 @@ import obscurum.environment.Tile;
 
 @Getter
 public abstract class ForegroundTile extends Tile {
-    protected int health;
+    protected int currentHealth;
     protected int baseHealth;
     protected int maxHealth;
     protected int armour;
@@ -20,23 +20,21 @@ public abstract class ForegroundTile extends Tile {
 
         if (baseHealth < 1) {
             throw new IllegalArgumentException(String.format("Base health %d must be at least 1.", baseHealth));
-        } else if (armour < 0) {
-            throw new IllegalArgumentException(String.format("Armour %d must be non-negative.", armour));
         }
 
-        this.health = baseHealth;
+        this.currentHealth = baseHealth;
         this.baseHealth = baseHealth;
         this.maxHealth = baseHealth;
-        this.armour = armour;
+        setArmour(armour);
         this.invulnerable = invulnerable;
         this.opaque = opaque;
     }
 
-    public void setHealth(int health) {
-        if (health < 0) {
-            throw new IllegalArgumentException(String.format("Health %d must not be negative.", health));
+    public void setCurrentHealth(int currentHealth) {
+        if (currentHealth < 0) {
+            throw new IllegalArgumentException(String.format("Health %d must not be negative.", currentHealth));
         }
-        this.health = health;
+        this.currentHealth = currentHealth;
     }
 
     public void setArmour(int armour) {

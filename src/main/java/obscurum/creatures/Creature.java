@@ -147,7 +147,7 @@ public abstract class Creature extends ForegroundTile {
     baseAttributes[DODGE_CHANCE] = Math.min(MAX_DODGE_CHANCE,
         baseAttributes[AGILITY] / 10);
     computeSecondaryAttributes();
-    this.health = this.maxHealth;
+    this.currentHealth = this.maxHealth;
     this.mana = this.maxMana;
     this.attackRange = attackRange;
 
@@ -356,7 +356,7 @@ public abstract class Creature extends ForegroundTile {
   }
 
   public void regenerate() {
-    health = Math.min(maxHealth, health + 1 + attributes[SPIRIT] / 2);
+    currentHealth = Math.min(maxHealth, currentHealth + 1 + attributes[SPIRIT] / 2);
     mana = Math.min(maxMana, mana + 1 + attributes[SPIRIT] / 2);
   }
 
@@ -398,9 +398,9 @@ public abstract class Creature extends ForegroundTile {
     ai.onEnter(new Point(p.x + location.x, p.y + location.y));
   }
 
-  public void setHealth(int health) {
-    super.setHealth(health);
-    if (health == 0) {
+  public void setCurrentHealth(int currentHealth) {
+    super.setCurrentHealth(currentHealth);
+    if (currentHealth == 0) {
       die();
     }
   }
@@ -483,10 +483,10 @@ public abstract class Creature extends ForegroundTile {
         damage = ((Weapon)equipment.getEquipment(Equipment.WEAPON)).dealDamage()
             + attributes[Creature.ATTACK_POWER];
       }
-      damage = Math.min(target.getHealth(),
+      damage = Math.min(target.getCurrentHealth(),
           Math.max(1, damage - target.getArmour() / (target.getAttributes()[Creature.POWER_LEVEL] + 2)));
 
-      target.setHealth(target.getHealth() - damage);
+      target.setCurrentHealth(target.getCurrentHealth() - damage);
     }
 
     target.resetCombatCooldown();
@@ -537,7 +537,7 @@ public abstract class Creature extends ForegroundTile {
         baseAttributes[AGILITY] / 5);
     maxHealth = baseHealth + attributes[STAMINA] * 2;
     maxMana = baseMana + attributes[INTELLECT] * 2;
-    health = Math.min(health, maxHealth);
+    currentHealth = Math.min(currentHealth, maxHealth);
     mana = Math.min(mana, maxMana);
   }
 

@@ -2,11 +2,9 @@ package obscurum.creatures;
 
 import java.awt.Point;
 import java.lang.Math;
-import obscurum.creatures.Creature;
-import obscurum.creatures.LootTableEntry;
+
 import obscurum.display.Display;
 import obscurum.environment.Level;
-import obscurum.items.Inventory;
 import obscurum.items.Item;
 import obscurum.items.RottenFlesh;
 import obscurum.items.SpellTome;
@@ -40,7 +38,7 @@ public class Zombie extends Creature {
 
   @Override
   public void powerUp() {
-    health += 50;
+    currentHealth += 50;
     armour += 50;
     attributes[Creature.POWER_LEVEL] += 10;
     for (int i = Creature.STRENGTH; i <= Creature.INTELLECT; i++) {
