@@ -3,32 +3,18 @@ package obscurum.environment.background.traps;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.background.traps.Trap;
 
-/**
- * This models a spike trap which takes the appearance of a given source
- * background tile (usually the one used to create the level) and deals damage
- * to the player when stepping on it.
- * @author Alex Ghita
- */
 public class SpikeTrap extends Trap {
-  public SpikeTrap() {
-    super();
-  }
-
-  public SpikeTrap(BackgroundTile sourceTile) {
-    super(sourceTile);
-  }
-
-  @Override
-  public void trigger(Creature target) {
-    if (target.isInvulnerable()) {
-      return;
+    public SpikeTrap(BackgroundTile sourceTile) {
+        super(sourceTile);
     }
-    int damage = Math.min(target.getCurrentHealth(),
-        (int)(target.getMaxHealth() * 0.05));
-    target.setCurrentHealth(target.getCurrentHealth() - damage);
-    ((Player)target).addMessageToCombatLog("You've walked into a spike trap! You've taken " + damage + " damage.");
-    target.resetCombatCooldown();
-  }
+
+    @Override
+    public void trigger(Creature target) {
+        int damage = Math.min(target.getCurrentHealth(),
+                (int)(target.getMaxHealth() * 0.05));
+        target.dealDamage(damage);
+        ((Player)target).addMessageToCombatLog("You've walked into a spike trap! You've taken " + damage + " damage.");
+        target.resetCombatCooldown();
+    }
 }
