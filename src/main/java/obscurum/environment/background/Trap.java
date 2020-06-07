@@ -1,6 +1,5 @@
 package obscurum.environment.background;
 
-import java.awt.Color;
 import obscurum.creatures.Creature;
 import obscurum.display.asciiPanel.AsciiPanel;
 
@@ -19,7 +18,7 @@ public abstract class Trap extends BackgroundTile {
 
   public Trap(BackgroundTile sourceTile) {
     super("Trap", sourceTile.getGlyph(),
-        sourceTile.getForegroundColour().brighter(),
+        sourceTile.getGlyphColour().brighter(),
         sourceTile.getBackgroundColour());
     this.sourceTile = sourceTile;
   }

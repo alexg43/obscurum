@@ -16,7 +16,6 @@ import obscurum.items.Inventory;
 import obscurum.items.InventorySlot;
 import obscurum.items.Item;
 import obscurum.placeholders.NullItem;
-import obscurum.screens.HelpScreen;
 
 /**
  * This models an inventory screen, where the player can browse their items,
@@ -137,7 +136,7 @@ public class InventoryScreen extends Screen {
       for (int i = 0; i < depiction.length; i++) {
         for (int j = 0; j < depiction[0].length; j++) {
           terminal.write(depiction[i][j].getGlyph(), topLeftX + j, topLeftY + i,
-              depiction[i][j].getForegroundColour(),
+              depiction[i][j].getGlyphColour(),
               depiction[i][j].getBackgroundColour());
         }
       }

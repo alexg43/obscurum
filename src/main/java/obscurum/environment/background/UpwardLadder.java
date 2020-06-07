@@ -20,7 +20,7 @@ public class UpwardLadder extends BackgroundTile {
    * @param b the tile from which the ladder should take its colours
    */
   public UpwardLadder(BackgroundTile b) {
-    super("Upward Ladder", Display.U_ARROW, b.getForegroundColour().brighter(),
+    super("Upward Ladder", Display.U_ARROW, b.getGlyphColour().brighter(),
         b.getBackgroundColour());
   }
 }

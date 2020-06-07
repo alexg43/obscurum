@@ -10,9 +10,9 @@ import obscurum.GameMain;
 public abstract class Tile {
     protected String name;
     protected char glyph;
-    protected Color foregroundColour;
+    protected Color glyphColour;
 
-    public Tile(String name, char glyph, Color foregroundColour) {
+    public Tile(String name, char glyph, Color glyphColour) {
         if (name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be empty.");
         } else if (glyph >= GameMain.NUM_OF_GLYPHS) {
@@ -21,11 +21,11 @@ public abstract class Tile {
 
         this.name = name;
         this.glyph = glyph;
-        setForegroundColour(foregroundColour);
+        setGlyphColour(glyphColour);
     }
 
-    public void setForegroundColour(@NonNull Color foregroundColour) {
-        this.foregroundColour = foregroundColour;
+    public void setGlyphColour(@NonNull Color glyphColour) {
+        this.glyphColour = glyphColour;
     }
 
     public boolean isOfType(@NonNull Tile tile) {

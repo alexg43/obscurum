@@ -21,6 +21,6 @@ public class DownwardLadder extends BackgroundTile {
    */
   public DownwardLadder(BackgroundTile b) {
     super("Downward Ladder", Display.D_ARROW,
-        b.getForegroundColour().brighter(), b.getBackgroundColour());
+        b.getGlyphColour().brighter(), b.getBackgroundColour());
   }
 }

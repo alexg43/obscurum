@@ -232,16 +232,16 @@ public class DepictionGenerator {
           double chance = Math.random();
           if (chance < 0.2) {
             blade[i][0] = new DisplayTile('\\',
-                blade[i][0].getForegroundColour());
+                blade[i][0].getGlyphColour());
             i++;
             blade[i][0] = new DisplayTile('/',
-                blade[i][0].getForegroundColour());
+                blade[i][0].getGlyphColour());
           } else if (chance < 0.4) {
             blade[i][blade[i].length - 1] = new DisplayTile('/',
-                blade[i][blade[i].length - 1].getForegroundColour());
+                blade[i][blade[i].length - 1].getGlyphColour());
             i++;
             blade[i][blade[i].length - 1] = new DisplayTile('\\',
-                blade[i][blade[i].length - 1].getForegroundColour());
+                blade[i][blade[i].length - 1].getGlyphColour());
           }
         }
       }
@@ -580,7 +580,7 @@ public class DepictionGenerator {
 
     return new DisplayTile(compatibleGlyphs.get(
         (int)(Math.random() * compatibleGlyphs.size())),
-        glyph.getForegroundColour());
+        glyph.getGlyphColour());
   }
 
 }

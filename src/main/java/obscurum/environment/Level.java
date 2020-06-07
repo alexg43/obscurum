@@ -236,9 +236,9 @@ public class Level {
       return new NullColour();
     }
     if (foreground[p.x][p.y] instanceof EmptyTile) {
-      return background[p.x][p.y].getForegroundColour();
+      return background[p.x][p.y].getGlyphColour();
     }
-    return foreground[p.x][p.y].getForegroundColour();
+    return foreground[p.x][p.y].getGlyphColour();
   }
 
   /**
