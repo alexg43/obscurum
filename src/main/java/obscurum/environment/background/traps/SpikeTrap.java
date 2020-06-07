@@ -1,7 +1,9 @@
-package obscurum.environment.background;
+package obscurum.environment.background.traps;
 
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
+import obscurum.environment.background.BackgroundTile;
+import obscurum.environment.background.traps.Trap;
 
 /**
  * This models a spike trap which takes the appearance of a given source

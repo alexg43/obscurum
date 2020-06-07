@@ -1,7 +1,8 @@
-package obscurum.environment.background;
+package obscurum.environment.background.traps;
 
 import obscurum.creatures.Creature;
 import obscurum.display.asciiPanel.AsciiPanel;
+import obscurum.environment.background.BackgroundTile;
 
 /**
  * This models a trap, which looks similar to a given source background tile,

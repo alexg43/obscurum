@@ -4,16 +4,13 @@ import java.awt.Point;
 import java.util.ArrayList;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
-import obscurum.creatures.abilities.Spell;
-import obscurum.creatures.ai.CreatureAI;
 import obscurum.environment.Level;
 import obscurum.environment.background.DownwardLadder;
 import obscurum.environment.background.ExitPortal;
-import obscurum.environment.background.Trap;
+import obscurum.environment.background.traps.Trap;
 import obscurum.environment.background.UpwardLadder;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
-import obscurum.items.Inventory;
 import obscurum.screens.RangedAttackAimScreen;
 import obscurum.screens.LootScreen;
 

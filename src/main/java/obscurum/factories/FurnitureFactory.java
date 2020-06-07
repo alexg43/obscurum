@@ -4,7 +4,7 @@ import java.awt.Point;
 import obscurum.creatures.Spawner;
 import obscurum.creatures.TreasureChest;
 import obscurum.environment.Level;
-import obscurum.environment.background.SpikeTrap;
+import obscurum.environment.background.traps.SpikeTrap;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.Torch;
 

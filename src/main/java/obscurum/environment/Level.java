@@ -9,7 +9,7 @@ import obscurum.creatures.ai.CorpseAI;
 import obscurum.environment.background.BackgroundTile;
 import obscurum.environment.background.DownwardLadder;
 import obscurum.environment.background.UpwardLadder;
-import obscurum.environment.background.Trap;
+import obscurum.environment.background.traps.Trap;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
 import obscurum.environment.foreground.Torch;
