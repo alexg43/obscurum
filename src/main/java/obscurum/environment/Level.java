@@ -763,7 +763,7 @@ public class Level {
 
   public void triggerTrap(Point p, Creature c) {
     ((Trap)(getBackgroundTile(p))).trigger(c);
-    setBackgroundTile(p, ((Trap)(getBackgroundTile(p))).getSourceTile());
+    setBackgroundTile(p, ((Trap)(getBackgroundTile(p))).getReplacementTile());
   }
 
   /**

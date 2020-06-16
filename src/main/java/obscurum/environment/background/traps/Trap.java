@@ -4,15 +4,15 @@ import obscurum.creatures.Creature;
 import obscurum.environment.background.BackgroundTile;
 
 public abstract class Trap extends BackgroundTile {
-    BackgroundTile sourceTile;
+    BackgroundTile replacementTile;
 
-    public Trap(BackgroundTile sourceTile) {
-        super("Trap", sourceTile.getGlyph(), sourceTile.getGlyphColour().brighter(), sourceTile.getBackgroundColour());
-        this.sourceTile = sourceTile;
+    public Trap(BackgroundTile replacementTile) {
+        super("Trap", replacementTile.getGlyph(), replacementTile.getGlyphColour().brighter(), replacementTile.getBackgroundColour());
+        this.replacementTile = replacementTile;
     }
 
-    public BackgroundTile getSourceTile() {
-        return sourceTile;
+    public BackgroundTile getReplacementTile() {
+        return replacementTile;
     }
 
     public abstract void trigger(Creature target);

@@ -11,10 +11,12 @@ public class SpikeTrap extends Trap {
 
     @Override
     public void trigger(Creature target) {
-        int damage = Math.min(target.getCurrentHealth(),
-                (int)(target.getMaxHealth() * 0.05));
+        int damage = Math.min(target.getCurrentHealth(), (int)(target.getMaxHealth() * 0.05));
         target.dealDamage(damage);
-        ((Player)target).addMessageToCombatLog("You've walked into a spike trap! You've taken " + damage + " damage.");
         target.resetCombatCooldown();
+
+        if (target instanceof Player) {
+            ((Player) target).addMessageToCombatLog("You've walked into a spike trap! You've taken " + damage + " damage.");
+        }
     }
 }
