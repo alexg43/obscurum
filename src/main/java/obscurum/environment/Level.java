@@ -202,7 +202,7 @@ public class Level {
     if (!isInBounds(p)) {
       return 0;
     }
-    if (foreground[p.x][p.y] instanceof EmptyTile) {
+    if (isForegroundOfType(p, "Empty Tile")) {
       return background[p.x][p.y].getGlyph();
     }
     return foreground[p.x][p.y].getGlyph();
@@ -233,7 +233,7 @@ public class Level {
     if (!isInBounds(p)) {
       return new NullColour();
     }
-    if (foreground[p.x][p.y] instanceof EmptyTile) {
+    if (isForegroundOfType(p, "Empty Tile")) {
       return background[p.x][p.y].getGlyphColour();
     }
     return foreground[p.x][p.y].getGlyphColour();
@@ -526,6 +526,10 @@ public class Level {
     return isForegroundOfType(new Point(x, y), f);
   }
 
+  public boolean isForegroundOfType(int x, int y, String tileName) {
+    return isForegroundOfType(new Point(x, y), tileName);
+  }
+
   /**
    * Checks whether the foreground tile at the given point is of the given
    * type.
@@ -538,6 +542,12 @@ public class Level {
     checkForIllegalLocation(p);
 
     return foreground[p.x][p.y].getClass().equals(f.getClass());
+  }
+
+  public boolean isForegroundOfType(Point p, String tileName) {
+    checkForIllegalLocation(p);
+
+    return foreground[p.x][p.y].getName().equals(tileName);
   }
 
   /**
@@ -793,36 +803,18 @@ public class Level {
     return countNearbyTiles(new Point(x, y), f, b, corners);
   }
 
-  /**
-   * Counts how many tiles near the tile at the given point have both
-   * foreground and background tiles of the given types.
-   * @param p
-   * @param f if the placeholder type ForegroundLevelBound is used, then
-   *          foreground type will not be used as a counting criterion
-   * @param b if the placeholder type BackgroundLevelBound is used, then
-   *          background type will not be used as a counting criterion
-   * @param corners if true, the method will take into account all eight tiles
-   *                surrounding the given tile; otherwise, it will ignore the
-   *                four corner tiles
-   * @return
-   */
-  private int countNearbyTiles(Point p, ForegroundTile f, BackgroundTile b,
-      boolean corners) {
-    // Check for illegal arguments.
+  private int countNearbyTiles(Point p, ForegroundTile f, BackgroundTile b, boolean corners) {
     checkForIllegalLocation(p);
 
     int count = 0;
 
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
-        if (i == 0 && j == 0 || !corners && i != 0 && j != 0 ||
-            !isInBounds(p.x + i, p.y + j)) {
+        if (i == 0 && j == 0 || !corners && i != 0 && j != 0 || !isInBounds(p.x + i, p.y + j)) {
           continue;
         }
-        if ((f instanceof ForegroundLevelBound ||
-            foreground[p.x + i][p.y + j].getClass().equals(f.getClass())) &&
-            (b instanceof BackgroundLevelBound ||
-            background[p.x + i][p.y + j].getClass().equals(b.getClass()))) {
+        if ((f instanceof ForegroundLevelBound || isForegroundOfType(p.x + i, p.y + j, f.name)) &&
+            (b instanceof BackgroundLevelBound || isBackgroundOfType(p.x + i, p.y + j,  b.name))) {
           count++;
         }
       }

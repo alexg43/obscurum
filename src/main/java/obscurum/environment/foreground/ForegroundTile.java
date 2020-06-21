@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import lombok.Getter;
 import lombok.Setter;
+import obscurum.display.Display;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Tile;
 
@@ -37,6 +38,10 @@ public class ForegroundTile extends Tile {
 
     public static ForegroundTile createWall() {
         return new ForegroundTile("Wall", (char)177, AsciiPanel.yellow, 1, 0, true, true);
+    }
+
+    public static ForegroundTile createEmptyTile() {
+        return new ForegroundTile("Empty Tile", Display.SPACE, Display.BLACK, 1, 0, true, false);
     }
 
     public void setCurrentHealth(int currentHealth) {
