@@ -3,14 +3,14 @@ package obscurum.screens;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
+
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
-import obscurum.creatures.util.Line;
+import obscurum.util.Line;
 import obscurum.display.Display;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
-import obscurum.environment.foreground.ForegroundTile;
-import obscurum.screens.PlayScreen;
 import obscurum.placeholders.NullCreature;
 
 /**
@@ -56,7 +56,7 @@ public abstract class AimScreen extends SubScreen {
   public void displayOutput(AsciiPanel terminal) {
     Line trajectory = new Line(playerLocation, targetLocation);
     trajectory.plotLine();
-    ArrayList<Point> points = trajectory.getPoints();
+    List<Point> points = trajectory.getPointsOnLine();
 
     for (Point p : points) {
       int xOffset = targetLocation.x - p.x;

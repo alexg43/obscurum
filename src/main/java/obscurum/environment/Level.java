@@ -613,7 +613,7 @@ public class Level {
 
   public boolean isIlluminated(Point p) {
     for (Torch t : torches) {
-      if (t.canSee(p)) {
+      if (t.doesIlluminate(p)) {
         return true;
       }
     }

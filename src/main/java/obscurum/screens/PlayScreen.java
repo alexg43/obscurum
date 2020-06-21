@@ -11,7 +11,7 @@ import obscurum.creatures.Player;
 import obscurum.creatures.ai.CorpseAI;
 import obscurum.creatures.ai.CreatureAI;
 import obscurum.creatures.ai.PlayerAI;
-import obscurum.creatures.util.Line;
+import obscurum.util.Line;
 import obscurum.display.Display;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
@@ -340,7 +340,7 @@ public class PlayScreen extends Screen {
               ((Creature)tile).isAlive()) {
             Line attackTrajectory = ((Creature)tile).getAttackTrajectory();
             if (attackTrajectory != null) {
-              attackTrajectories.addAll(attackTrajectory.getPoints());
+              attackTrajectories.addAll(attackTrajectory.getPointsOnLine());
             }
           }
 
@@ -366,7 +366,7 @@ public class PlayScreen extends Screen {
                 ((Creature)tile).isAlive()) {
               Line attackTrajectory = ((Creature)tile).getAttackTrajectory();
               if (attackTrajectory != null) {
-                attackTrajectories.addAll(attackTrajectory.getPoints());
+                attackTrajectories.addAll(attackTrajectory.getPointsOnLine());
               }
             }
             terminal.write(player.getLevel().getDisplayGlyph(wx, wy), x + 1,

@@ -3,9 +3,10 @@ package obscurum.creatures.ai;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.PriorityQueue;
 import obscurum.creatures.Creature;
-import obscurum.creatures.util.Line;
+import obscurum.util.Line;
 import obscurum.creatures.abilities.Spell;
 import obscurum.environment.Level;
 import obscurum.environment.foreground.EmptyTile;
@@ -124,14 +125,14 @@ public abstract class CreatureAI {
     int distance = (source.x - target.x) * (source.x - target.x) +
         (source.y - target.y) * (source.y - target.y);
     Line sightRay;
-    ArrayList<Point> linePoints;
+    List<Point> linePoints;
 
     if (distance > maxDistance * maxDistance && maxDistance != -1) {
       return false;
     }
     sightRay = new Line(creature.getLocation(), target);
     sightRay.plotLine();
-    linePoints = sightRay.getPoints();
+    linePoints = sightRay.getPointsOnLine();
     for (Point p : linePoints) {
       if (creature.getLevel().getForegroundTile(p).isOpaque() &&
           !p.equals(target) && !p.equals(source)) {

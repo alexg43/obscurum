@@ -9,7 +9,7 @@ import obscurum.creatures.abilities.Spell;
 import obscurum.creatures.ai.CorpseAI;
 import obscurum.creatures.ai.CreatureAI;
 import obscurum.creatures.util.EquipmentList;
-import obscurum.creatures.util.Line;
+import obscurum.util.Line;
 import obscurum.environment.Level;
 import obscurum.environment.background.BackgroundTile;
 import obscurum.environment.foreground.EmptyTile;
