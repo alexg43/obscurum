@@ -246,8 +246,8 @@ public class PlayScreen extends Screen {
     ArrayList<BackgroundTile> backgroundOptions =
         new ArrayList<BackgroundTile>();
 
-    foregroundOptions.add(new Wall());
-    foregroundOptions.add(new Stone());
+    foregroundOptions.add(ForegroundTile.createWall());
+    foregroundOptions.add(ForegroundTile.createStone());
     backgroundOptions.add(BackgroundTile.createFloor());
     backgroundOptions.add(BackgroundTile.createGrass());
 

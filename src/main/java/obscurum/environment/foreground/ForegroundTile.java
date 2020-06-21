@@ -4,10 +4,11 @@ import java.awt.Color;
 
 import lombok.Getter;
 import lombok.Setter;
+import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Tile;
 
 @Getter
-public abstract class ForegroundTile extends Tile {
+public class ForegroundTile extends Tile {
     protected int currentHealth;
     protected int baseHealth;
     protected int maxHealth;
@@ -28,6 +29,14 @@ public abstract class ForegroundTile extends Tile {
         setArmour(armour);
         this.invulnerable = invulnerable;
         this.opaque = opaque;
+    }
+
+    public static ForegroundTile createStone() {
+        return new ForegroundTile("Stone", (char) 177, AsciiPanel.brightBlack, 1, 0, true, true);
+    }
+
+    public static ForegroundTile createWall() {
+        return new ForegroundTile("Wall", (char)177, AsciiPanel.yellow, 1, 0, true, true);
     }
 
     public void setCurrentHealth(int currentHealth) {

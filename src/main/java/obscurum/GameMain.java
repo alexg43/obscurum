@@ -15,7 +15,7 @@ public class GameMain extends JFrame implements KeyListener {
     public static final int SCREEN_WIDTH = 110;
     public static final int SCREEN_HEIGHT = 29;
     public static final int NUM_OF_GLYPHS = 256;
-    public static List<ForegroundTile> foregroundTiles = Arrays.asList(new Stone(), new Wall());
+    public static List<ForegroundTile> foregroundTiles = Arrays.asList(ForegroundTile.createStone(), ForegroundTile.createWall());
 
     private final AsciiPanel terminal;
     private Screen screen;
