@@ -7,11 +7,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import obscurum.environment.Level;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.background.DownwardLadder;
-import obscurum.environment.background.UpwardLadder;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
-import obscurum.placeholders.BackgroundLevelBound;
 import obscurum.placeholders.ConnectorBackground;
 import obscurum.placeholders.PathBackground;
 
@@ -499,16 +496,14 @@ public class DungeonBuilder extends Builder {
       do {
         ladderLocation = level.getRandomEmptyLocation();
       } while (!isInRoom(ladderLocation));
-      level.setBackgroundTile(ladderLocation, new DownwardLadder(
-          level.getBackgroundTile(ladderLocation)));
+      level.setBackgroundTile(ladderLocation, BackgroundTile.createDownwardDoorway(level.getBackgroundTile(ladderLocation)));
       level.setNextLocation(ladderLocation);
     }
     if (hasPrevious) {
       do {
         ladderLocation = level.getRandomEmptyLocation();
       } while (!isInRoom(ladderLocation));
-      level.setBackgroundTile(ladderLocation, new UpwardLadder(
-          level.getBackgroundTile(ladderLocation)));
+      level.setBackgroundTile(ladderLocation, BackgroundTile.createUpwardDoorway(level.getBackgroundTile(ladderLocation)));
       level.setPreviousLocation(ladderLocation);
     }
   }

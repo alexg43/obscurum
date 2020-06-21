@@ -7,8 +7,6 @@ import obscurum.creatures.Creature;
 import obscurum.creatures.Spawner;
 import obscurum.creatures.ai.CorpseAI;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.background.DownwardLadder;
-import obscurum.environment.background.UpwardLadder;
 import obscurum.environment.background.traps.Trap;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
@@ -479,8 +477,8 @@ public class Level {
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
         if (isForegroundOfType(x, y, new EmptyTile()) &&
-            !isBackgroundOfType(x, y, new DownwardLadder()) &&
-            !isBackgroundOfType(x, y, new UpwardLadder())) {
+            !isBackgroundOfType(x, y, "Downward Doorway") &&
+            !isBackgroundOfType(x, y, "Upward Doorway")) {
           emptyLocations.add(new Point(x, y));
         }
       }
@@ -554,6 +552,10 @@ public class Level {
     return isBackgroundOfType(new Point(x, y), b);
   }
 
+  public boolean isBackgroundOfType(int x, int y, String tileName) {
+    return isBackgroundOfType(new Point(x, y), tileName);
+  }
+
   /**
    * Checks whether the background tile at the given point is of the given
    * type.
@@ -566,6 +568,12 @@ public class Level {
     checkForIllegalLocation(p);
 
     return background[p.x][p.y].getClass().equals(b.getClass());
+  }
+
+  public boolean isBackgroundOfType(Point p, String tileName) {
+    checkForIllegalLocation(p);
+
+    return background[p.x][p.y].getName().equals(tileName);
   }
 
   /**

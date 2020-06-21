@@ -4,8 +4,6 @@ import java.awt.Point;
 import java.lang.Math;
 import obscurum.environment.Level;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.background.DownwardLadder;
-import obscurum.environment.background.UpwardLadder;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
 
@@ -100,14 +98,12 @@ public class CaveBuilder extends Builder {
     Point ladderLocation;
     if (hasNext) {
       ladderLocation = level.getRandomEmptyLocation();
-      level.setBackgroundTile(ladderLocation, new DownwardLadder(
-          level.getBackgroundTile(ladderLocation)));
+      level.setBackgroundTile(ladderLocation, BackgroundTile.createDownwardDoorway(level.getBackgroundTile(ladderLocation)));
       level.setNextLocation(ladderLocation);
     }
     if (hasPrevious) {
       ladderLocation = level.getRandomEmptyLocation();
-      level.setBackgroundTile(ladderLocation, new UpwardLadder(
-          level.getBackgroundTile(ladderLocation)));
+      level.setBackgroundTile(ladderLocation, BackgroundTile.createUpwardDoorway(level.getBackgroundTile(ladderLocation)));
       level.setPreviousLocation(ladderLocation);
     }
   }

@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
 import obscurum.environment.Level;
-import obscurum.environment.background.DownwardLadder;
 import obscurum.environment.background.ExitPortal;
 import obscurum.environment.background.traps.Trap;
-import obscurum.environment.background.UpwardLadder;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
 import obscurum.screens.RangedAttackAimScreen;
@@ -27,13 +25,12 @@ public class PlayerAI extends CreatureAI {
   @Override
   public void onEnter(Point p) {
     if (creature.getLevel().isForegroundOfType(p, new EmptyTile())) {
-      if (creature.getLevel().isBackgroundOfType(p, new DownwardLadder())) {
+      if (creature.getLevel().isBackgroundOfType(p, "Downward Doorway")) {
         ((Player)creature).setCurrentLevel(((Player)creature).getCurrentLevel()
             + 1);
         switchLevels(creature.getLevel(), creature.getLevel().getNext(),
             creature.getLevel().getNext().getPreviousLocation());
-      } else if (creature.getLevel().isBackgroundOfType(p,
-          new UpwardLadder())) {
+      } else if (creature.getLevel().isBackgroundOfType(p, "Upward Doorway")) {
         ((Player)creature).setCurrentLevel(((Player)creature).getCurrentLevel()
             - 1);
         switchLevels(creature.getLevel(), creature.getLevel().getPrevious(),
