@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import lombok.Getter;
 import lombok.NonNull;
-import obscurum.display.Display;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Tile;
 
@@ -22,6 +21,6 @@ public class BackgroundTile extends Tile {
     }
 
     public static BackgroundTile createGrass() {
-        return new BackgroundTile("Grass", '.', AsciiPanel.green, Display.BLACK);
+        return new BackgroundTile("Grass", '.', AsciiPanel.green, AsciiPanel.black);
     }
 }
