@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import obscurum.creatures.Creature;
 import obscurum.creatures.Player;
 import obscurum.environment.Level;
-import obscurum.environment.background.ExitPortal;
 import obscurum.environment.background.traps.Trap;
 import obscurum.environment.foreground.EmptyTile;
 import obscurum.environment.foreground.ForegroundTile;
@@ -35,7 +34,7 @@ public class PlayerAI extends CreatureAI {
             - 1);
         switchLevels(creature.getLevel(), creature.getLevel().getPrevious(),
             creature.getLevel().getPrevious().getNextLocation());
-      } else if (creature.getLevel().isBackgroundOfType(p, new ExitPortal())) {
+      } else if (creature.getLevel().isBackgroundOfType(p, "Exit Portal")) {
         creature.move(p);
         ((Player)creature).setWin();
       } else if (creature.getLevel().getBackgroundTile(p) instanceof Trap) {

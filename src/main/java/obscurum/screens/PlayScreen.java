@@ -322,8 +322,7 @@ public class PlayScreen extends Screen {
           location = world[0].getRandomEmptyLocation();
         } while (world[0].countSurroundingForegroundTiles(location,
             new EmptyTile()) < 8);
-        world[0].setBackgroundTile(location, new ExitPortal(
-            world[0].getBackgroundTile(location)));
+        world[0].setBackgroundTile(location, BackgroundTile.createExitPortal(world[0].getBackgroundTile(location)));
         for (int i = 0; i < world.length; i++) {
           world[i].powerUpCreatures();
         }

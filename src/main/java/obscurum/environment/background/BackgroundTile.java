@@ -31,4 +31,8 @@ public class BackgroundTile extends Tile {
     public static BackgroundTile createDownwardDoorway(BackgroundTile colourTemplate) {
         return new BackgroundTile("Downward Doorway", Display.U_ARROW, colourTemplate.glyphColour.brighter(), colourTemplate.backgroundColour);
     }
+
+    public static BackgroundTile createExitPortal(BackgroundTile colourTemplate) {
+        return new BackgroundTile("Exit Portal", (char) 233, Display.YELLOW, colourTemplate.backgroundColour);
+    }
 }
