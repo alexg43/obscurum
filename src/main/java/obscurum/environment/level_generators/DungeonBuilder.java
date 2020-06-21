@@ -1,4 +1,4 @@
-package obscurum.environment.builders;
+package obscurum.environment.level_generators;
 
 import java.awt.Point;
 import java.lang.Math;

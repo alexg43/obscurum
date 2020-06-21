@@ -16,7 +16,7 @@ import obscurum.display.Display;
 import obscurum.display.asciiPanel.AsciiPanel;
 import obscurum.environment.Level;
 import obscurum.environment.background.*;
-import obscurum.environment.builders.*;
+import obscurum.environment.level_generators.*;
 import obscurum.environment.foreground.*;
 import obscurum.factories.*;
 import obscurum.items.Equipment;

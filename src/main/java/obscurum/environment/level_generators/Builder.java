@@ -1,4 +1,4 @@
-package obscurum.environment.builders;
+package obscurum.environment.level_generators;
 
 import obscurum.environment.Level;
 import obscurum.environment.background.BackgroundTile;
