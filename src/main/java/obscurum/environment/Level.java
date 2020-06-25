@@ -13,7 +13,6 @@ import obscurum.environment.foreground.ForegroundTile;
 import obscurum.environment.foreground.Torch;
 import obscurum.placeholders.BackgroundLevelBound;
 import obscurum.placeholders.ForegroundLevelBound;
-import obscurum.placeholders.NullColour;
 import obscurum.placeholders.NullCreature;
 import obscurum.placeholders.NullLevel;
 
@@ -230,9 +229,7 @@ public class Level {
    *         of bounds
    */
   public Color getDisplayForegroundColour(Point p) {
-    if (!isInBounds(p)) {
-      return new NullColour();
-    }
+    checkForIllegalLocation(p);
     if (isForegroundOfType(p, "Empty Tile")) {
       return background[p.x][p.y].getGlyphColour();
     }
@@ -259,9 +256,7 @@ public class Level {
    *         of bounds
    */
   public Color getDisplayBackgroundColour(Point p) {
-    if (!isInBounds(p)) {
-      return new NullColour();
-    }
+    checkForIllegalLocation(p);
     return background[p.x][p.y].getBackgroundColour();
   }
 
