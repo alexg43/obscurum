@@ -254,7 +254,7 @@ public class PlayScreen extends Screen {
     ArrayList<String[]> input = readCSV("custom_tiles.csv");
     for (String[] line : input) {
       if (line.length == 5) {
-        foregroundOptions.add(new CustomForegroundTile(line[0],
+        foregroundOptions.add(new ForegroundTile(line[0],
             (char)Integer.parseInt(line[1]), new Color(
             Integer.parseInt(line[2]), Integer.parseInt(line[3]),
             Integer.parseInt(line[4]))));

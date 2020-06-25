@@ -13,7 +13,7 @@ import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.environment.Tile;
 import obscurum.environment.background.BackgroundTile;
-import obscurum.environment.foreground.CustomForegroundTile;
+import obscurum.environment.foreground.ForegroundTile;
 
 /**
  * This models the game editor screen, where players can view, add, and delete
@@ -33,7 +33,7 @@ public class GameEditorScreen extends Screen {
   private static final int OBJECT_DATA_HEIGHT = GameMain.SCREEN_HEIGHT;
   private static final String[] listNames = {"Foreground Tiles",
       "Background Tiles"};
-  private ArrayList<CustomForegroundTile> foregroundTiles;
+  private ArrayList<ForegroundTile> foregroundTiles;
   private ArrayList<BackgroundTile> backgroundTiles;
   private ArrayList<Integer> indicesToRemove;
   private ScrollList scrollList;
@@ -44,8 +44,8 @@ public class GameEditorScreen extends Screen {
 
   public GameEditorScreen() {
     super();
-    foregroundTiles = new ArrayList<CustomForegroundTile>();
-    backgroundTiles = new ArrayList<BackgroundTile>();
+    foregroundTiles = new ArrayList<>();
+    backgroundTiles = new ArrayList<>();
     selectedList = previousList = 0;
 
     ArrayList<String[]> input = readCSV("custom_tiles.csv");
@@ -55,7 +55,7 @@ public class GameEditorScreen extends Screen {
       Color fg = new Color(Integer.parseInt(line[2]),
           Integer.parseInt(line[3]), Integer.parseInt(line[4]));
       if (line.length == 5) {
-        foregroundTiles.add(new CustomForegroundTile(name, glyph, fg));
+        foregroundTiles.add(new ForegroundTile(name, glyph, fg));
       } else {
         Color bg = new Color(Integer.parseInt(line[5]),
             Integer.parseInt(line[6]), Integer.parseInt(line[7]));
@@ -68,7 +68,7 @@ public class GameEditorScreen extends Screen {
     makeScrollList();
   }
 
-  public void addForegroundTile(CustomForegroundTile f) {
+  public void addForegroundTile(ForegroundTile f) {
     foregroundTiles.add(f);
     scrollList.getEntries().add(new ListEntry(f.getName(),
         scrollList.getEntries().size()));
@@ -248,8 +248,8 @@ public class GameEditorScreen extends Screen {
       customObjects.addAll(foregroundTiles);
       customObjects.addAll(backgroundTiles);
       for (Object o : customObjects) {
-        if (o instanceof CustomForegroundTile) {
-          CustomForegroundTile tile = (CustomForegroundTile)o;
+        if (o instanceof ForegroundTile) {
+          ForegroundTile tile = (ForegroundTile)o;
           Color fg = tile.getGlyphColour();
           writer.append(tile.getName() + "," + (int)tile.getGlyph() + "," +
               fg.getRed() + "," + fg.getGreen() + "," + fg.getBlue() + "\n");

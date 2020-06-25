@@ -17,6 +17,10 @@ public class ForegroundTile extends Tile {
     @Setter protected boolean invulnerable;
     @Setter protected boolean opaque;
 
+    public ForegroundTile(String name, char glyph, Color foregroundColour) {
+        this(name, glyph, foregroundColour, 1, 0, true, true);
+    }
+
     public ForegroundTile(String name, char glyph, Color foregroundColour, int baseHealth, int armour, boolean invulnerable, boolean opaque) {
         super(name, glyph, foregroundColour);
 

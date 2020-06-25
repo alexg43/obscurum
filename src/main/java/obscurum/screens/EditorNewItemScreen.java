@@ -10,7 +10,7 @@ import obscurum.display.Display;
 import obscurum.display.ListEntry;
 import obscurum.display.ScrollList;
 import obscurum.display.asciiPanel.AsciiPanel;
-import obscurum.environment.foreground.CustomForegroundTile;
+import obscurum.environment.foreground.ForegroundTile;
 
 /**
  * This models a subscreen where players can add new tiles through the game
@@ -151,8 +151,7 @@ public class EditorNewItemScreen extends SubScreen {
         return this;
       case KeyEvent.VK_ENTER:
         if (objectType == 0) {
-          mainScreen.addForegroundTile(new CustomForegroundTile(name, glyph,
-              Display.COLOURS[fgIndex]));
+          mainScreen.addForegroundTile(new ForegroundTile(name, glyph, Display.COLOURS[fgIndex]));
         } else {
           mainScreen.addBackgroundTile(new BackgroundTile(name, glyph,
               Display.COLOURS[fgIndex], Display.COLOURS[bgIndex]));
