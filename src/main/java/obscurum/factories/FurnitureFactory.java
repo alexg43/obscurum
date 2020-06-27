@@ -28,7 +28,7 @@ public class FurnitureFactory {
         new EmptyTile()) < 8);
     Torch torch = new Torch(3 + (int)(Math.random() * 5), level, location);
     level.setForegroundTile(torch.getLocation(), torch);
-    level.torches.add(torch);
+    level.addTorch(torch);
     return torch;
   }
 
@@ -42,7 +42,7 @@ public class FurnitureFactory {
     Spawner spawner = new Spawner(level, location, creatures,
         creaturePowerLevel, maxCreatureCount, factory);
     level.setForegroundTile(location, spawner);
-    level.spawners.add(spawner);
+    level.addSpawner(spawner);
   }
 
   // Special treasure chest.
